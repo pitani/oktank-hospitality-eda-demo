@@ -1,0 +1,36 @@
+server:
+  port: 8182
+
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+
+    consumer:
+      group-id: loyalty-svc
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+      properties:
+        # Delegate actual JSON deserialization to JsonDeserializer
+        spring.deserializer.value.delegate.class: org.springframework.kafka.support.serializer.JsonDeserializer
+        # Trust your event packages
+        spring.json.trusted.packages: com.oktank.*
+        # Prefer type headers (from the reservation service producer)
+        spring.json.use.type.headers: true
+        # Fallback so you can still read older records without headers
+        spring.json.value.default.type: com.oktank.reservation.ReservationCreated
+
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        # ADD TYPE HEADERS so notification can auto-deserialize LoyaltyUpdated
+        spring.json.add.type.headers: true
+        spring.json.trusted.packages: com.oktank.*
+
+    listener:
+      ack-mode: batch
+
+app:
+  topics:
+    reservationCreated: reservations.created
+    loyaltyUpdated: loyalty.updated
