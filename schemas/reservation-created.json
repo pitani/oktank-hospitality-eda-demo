@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ReservationCreated",
+  "type": "object",
+  "required": [
+    "reservationId",
+    "guestId",
+    "hotelId",
+    "checkIn",
+    "checkOut",
+    "amount",
+    "currency",
+    "createdAt"
+  ],
+  "properties": {
+    "reservationId": {
+      "type": "string"
+    },
+    "guestId": {
+      "type": "string"
+    },
+    "hotelId": {
+      "type": "string"
+    },
+    "roomType": {
+      "type": "string"
+    },
+    "checkIn": {
+      "type": "string",
+      "format": "date"
+    },
+    "checkOut": {
+      "type": "string",
+      "format": "date"
+    },
+    "amount": {
+      "type": "number"
+    },
+    "currency": {
+      "type": "string"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

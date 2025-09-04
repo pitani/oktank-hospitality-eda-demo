@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LoyaltyUpdated",
+  "type": "object",
+  "required": [
+    "reservationId",
+    "guestId",
+    "pointsEarned",
+    "timestamp"
+  ],
+  "properties": {
+    "reservationId": {
+      "type": "string"
+    },
+    "guestId": {
+      "type": "string"
+    },
+    "pointsEarned": {
+      "type": "integer"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

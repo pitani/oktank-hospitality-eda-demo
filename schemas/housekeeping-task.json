@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "HousekeepingTask",
+  "type": "object",
+  "required": [
+    "reservationId",
+    "roomType",
+    "start",
+    "end"
+  ],
+  "properties": {
+    "reservationId": {
+      "type": "string"
+    },
+    "roomType": {
+      "type": "string"
+    },
+    "start": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "end": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

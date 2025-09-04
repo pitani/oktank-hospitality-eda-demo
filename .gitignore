@@ -1,0 +1,23 @@
+# Maven/Gradle
+target/
+build/
+out/
+
+# IDEs
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+.project
+.classpath
+.settings/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node (if any UI later)
+node_modules/
+dist/
+.git.backup/
