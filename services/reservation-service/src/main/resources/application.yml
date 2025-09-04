@@ -1,0 +1,29 @@
+server:
+  port: 8181
+
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        spring.json.add.type.headers: true         # add type headers so consumers can deserialize
+        spring.json.trusted.packages: com.oktank.* # safe for your event packages
+    properties:
+      # Optional but nice to have for tracing in logs/brokers
+      client.id: reservation-svc
+
+app:
+  topics:
+    reservationCreated: reservations.created
+
+management:
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: health,info,mappings
+  endpoint:
+    health:
+      show-details: always
